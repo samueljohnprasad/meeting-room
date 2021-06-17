@@ -10,7 +10,8 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
-import Chip from '@material-ui/core/Chip';
+import Chip from "@material-ui/core/Chip";
+import Chips from "./Chips";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -34,7 +35,7 @@ export default function FormComp() {
   const classes = useStyles();
   const [errorDes, setErrorDes] = useState(false);
   let [errorName, setErrorName] = useState(false);
-
+  let slot = "Please select your preferred slot";
   console.log("state in form ", state);
 
   //event handlers
@@ -61,70 +62,99 @@ export default function FormComp() {
     setName("");
   };
   return (
-    <div>
-      <FormControl>
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel htmlFor="outlined-meeting-native-simple">
-            Select Meeting Room
-          </InputLabel>
-          <Select
-            native
-            value={meeting}
-            onChange={(e) => {
-              setMeeting(e.target.value);
-              console.log(e.target.value);
-            }}
-            label="Select Meeting Room"
-            inputProps={{
-              name: "meeting",
-              id: "outlined-meeting-native-simple",
-            }}
+    <FormControl>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+        }}
+      >
+        <div
+          style={{
+            width: 350,
+            margin: 40,
+            padding: 0,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
+        >
+          <FormControl
+            style={{ margin: 0 }}
+            variant="outlined"
+            className={classes.formControl}
           >
-            <option aria-label="None" value="" />
-            <option>Training Room</option>
-            <option>General meeting</option>
-            <option>Group meeting</option>
-            <option>Discussion meeting</option>
-            <option>Company meeting</option>
-          </Select>
-        </FormControl>
-        {/* onChange={(e)=>{setMeeting(e.target.value)}} */}
-        <br /> <br /> <br />
-        <TextField
-          error={errorName}
-          id="outlined-full-width"
-          label="Name"
-          style={{ margin: 8 }}
-          placeholder="Enter Your Name"
-          margin="normal"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          value={name}
-          variant="outlined"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <br /> <br /> <br />
-        <TextField
-          error={errorDes}
-          id="outlined-textarea"
-          label="Meeting Description"
-          placeholder="Enter Meeting Description"
-          multiline
-          helperText={
-            errorDes && "description should have atleast 10 characters"
-          }
-          InputLabelProps={{
-            shrink: true,
-          }}
-          value={description}
-          variant="outlined"
-          onChange={(e) => setDescription(e.target.value)}
-        />
-        <br /> <br />
+            <InputLabel htmlFor="outlined-meeting-native-simple">
+              Select Meeting Room
+            </InputLabel>
+            <Select
+              native
+              value={meeting}
+              onChange={(e) => {
+                setMeeting(e.target.value);
+                console.log(e.target.value);
+              }}
+              label="Select Meeting Room"
+              inputProps={{
+                name: "meeting",
+                id: "outlined-meeting-native-simple",
+              }}
+            >
+              <option aria-label="None" value="" />
+              <option>Training Room</option>
+              <option>General meeting</option>
+              <option>Group meeting</option>
+              <option>Discussion meeting</option>
+              <option>Company meeting</option>
+            </Select>
+          </FormControl>
+          <br />
+          {/* onChange={(e)=>{setMeeting(e.target.value)}} */}
+
+          <TextField
+            error={errorName}
+            id="outlined-full-width"
+            label="Name"
+            placeholder="Enter Your Name"
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={name}
+            variant="outlined"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <br />
+
+          <TextField
+            error={errorDes}
+            id="outlined-textarea"
+            label="Meeting Description"
+            placeholder="Enter Meeting Description"
+            multiline
+            helperText={
+              errorDes && "description should have atleast 10 characters"
+            }
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={description}
+            variant="outlined"
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </div>
         <Calendar value={date} onChange={(e) => setDate(e)} />
         {date.toDateString()}
-        <br /> <br />
+        <br />
+        <br />
+
+        <div>
+        
+
+          <Chips  slot={slot}/>
+        </div>
+        <br />
         <Button
           onClick={bookAppointmentHandler}
           variant="contained"
@@ -132,7 +162,7 @@ export default function FormComp() {
         >
           BOOK APPOINTMENT
         </Button>
-      </FormControl>
-    </div>
+      </div>
+    </FormControl>
   );
 }

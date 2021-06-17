@@ -1,6 +1,11 @@
 .App {
-  text-align: center;
-  margin-top: 34px;
+  display: flex;
+  flex-wrap: wrap;
+   align-items: center;
+  
+  justify-content: space-around;
+  
+  margin-bottom: 50px;
  
 }
 
@@ -15,7 +20,7 @@
   }
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -24,7 +29,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
+} */
 
 .App-link {
   color: #61dafb;
