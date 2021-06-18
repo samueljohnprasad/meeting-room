@@ -35,13 +35,18 @@ export default function FormComp() {
   const classes = useStyles();
   const [errorDes, setErrorDes] = useState(false);
   let [errorName, setErrorName] = useState(false);
+  let [time, setTime] = useState("");
   let slot = "Please select your preferred slot";
   console.log("state in form ", state);
 
   //event handlers
+  const timeHandler = (e) => {
+    setTime(e)
+  };
   const bookAppointmentHandler = (e) => {
     e.preventDefault();
-    if (!name || description.length < 10) {
+    if (!name || description.length < 1) {
+     //length changed to 1 while in devlopment
       setErrorName(true);
       setErrorDes(true);
 
@@ -53,7 +58,8 @@ export default function FormComp() {
         name,
         description,
         meeting,
-        date: date.toDateString(),
+        date: date.toLocaleDateString(),
+        time
       })
     );
     setMeeting(initialStates.meeting);
@@ -93,7 +99,7 @@ export default function FormComp() {
               value={meeting}
               onChange={(e) => {
                 setMeeting(e.target.value);
-                console.log(e.target.value);
+                
               }}
               label="Select Meeting Room"
               inputProps={{
@@ -150,9 +156,7 @@ export default function FormComp() {
         <br />
 
         <div>
-        
-
-          <Chips  slot={slot}/>
+          <Chips slot={slot} timeHandler={timeHandler} />
         </div>
         <br />
         <Button

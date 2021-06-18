@@ -28,16 +28,21 @@ function Login({history}) {
 
     auth.signInWithPopup(googleAuthProvider).then(async (result) => {
       const { user } = result;
-      console.log('userr',user)
+      //console.log('userr-> ',user)
+       
+      //console.log('displayName->',user.displayName)
+
       const idTokenResult = await user.getIdTokenResult();
+      console.log('idTokenResult',idTokenResult)
       dispatch({
        type:'LOGGED_IN_USER',
        payload:{
            email:user.email,
-           token:idTokenResult.token
+           token:idTokenResult.token,
+           displayName:user.displayName
        }
       })
-      history.push('/form')
+      history.push('/home')
     }).catch((err)=>{
         console.log('you got error',err)
     })

@@ -5,20 +5,18 @@ import FormComp from "./components/FormComp";
 import Login from "./pages/auth/Login";
 import { Switch, Route } from "react-router-dom";
 import Nav from "./components/Nav";
-import Chips from './components/Chips'
+import Chips from "./components/Chips";
+import Home from "./components/Home";
 function App() {
-  
   return (
     <React.Fragment>
-      <Nav/>
-      <div className="App">
+      <Nav />
+      
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route path="/form" component={FormComp} />
+          <Route path="/home" component={Home} />
         </Switch>
-
-        {/* <Chips/> */}
-      </div>
+     
     </React.Fragment>
   );
 }

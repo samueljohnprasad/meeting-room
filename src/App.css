@@ -1,12 +1,27 @@
 .App {
   display: flex;
   flex-wrap: wrap;
-   align-items: center;
-  
+  align-items: center;
+
+  justify-content: space-evenly;
+
+  margin-bottom: 50px;
+}
+
+.lol {
+  width: 450px;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: scroll;
   justify-content: space-around;
   
-  margin-bottom: 50px;
- 
+}
+
+
+.hey {
+  margin-right: 450px;
 }
 
 .App-logo {

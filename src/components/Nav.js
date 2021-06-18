@@ -8,7 +8,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 
 import AccountCircle from "@material-ui/icons/AccountCircle";
-
+import {useSelector} from 'react-redux'
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -18,6 +18,8 @@ const useStyles = makeStyles((theme) => ({
     marginRight: theme.spacing(2),
   },
   title: {
+    textAlign:'left',
+    marginLeft:'40%',
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block",
@@ -31,12 +33,13 @@ const useStyles = makeStyles((theme) => ({
 
 function Nav() {
   const classes = useStyles();
+  
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   //let history = useHistory();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
+  const displayName =useSelector((store)=>store.user.displayName)
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -100,12 +103,15 @@ function Nav() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <Typography className={classes.title} variant="h6" noWrap>
+          <Typography  variant="h6" noWrap>
             Meeting Room
           </Typography>
-
+          <Typography className={classes.title} variant="h6" noWrap>
+            {`Hello ${displayName}`}
+          </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+            
             <IconButton
               edge="end"
               aria-label="account of current user"

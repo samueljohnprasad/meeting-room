@@ -1,6 +1,7 @@
 const initialState = {
     email:'',
-    token:''
+    token:'',
+    displayName:''
 }
   
 ;
@@ -8,10 +9,11 @@ const initialState = {
 const loginReducer = (state = initialState, action) => {
    // console.log('input reducer',action)
   switch (action.type) {
-    case "SUBMIT_FORM":
+    case "LOGGED_IN_USER":
       return {
            email:action.payload.email,
-           token:action.payload.token
+           token:action.payload.token,
+           displayName:action.payload.displayName
       };
 
       default:
