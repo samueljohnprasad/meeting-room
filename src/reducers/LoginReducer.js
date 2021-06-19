@@ -1,7 +1,8 @@
 const initialState = {
     email:'',
     token:'',
-    displayName:''
+    displayName:'',
+    photoURL:''
 }
   
 ;
@@ -11,9 +12,7 @@ const loginReducer = (state = initialState, action) => {
   switch (action.type) {
     case "LOGGED_IN_USER":
       return {
-           email:action.payload.email,
-           token:action.payload.token,
-           displayName:action.payload.displayName
+         ...action.payload
       };
 
       default:

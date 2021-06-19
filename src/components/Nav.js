@@ -6,7 +6,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-
+import { Avatar } from '@material-ui/core';
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import {useSelector} from 'react-redux'
 
@@ -33,13 +33,16 @@ const useStyles = makeStyles((theme) => ({
 
 function Nav() {
   const classes = useStyles();
+
   
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   //let history = useHistory();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const displayName =useSelector((store)=>store.user.displayName)
+  const {displayName,photoURL} =useSelector((store)=>store.user)
+  console.log('pp',photoURL)
+  
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -120,7 +123,7 @@ function Nav() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              <Avatar alt='p' src={photoURL}/>
             </IconButton>
           </div>
         </Toolbar>

@@ -48,8 +48,12 @@ export default function FormComp() {
     e.preventDefault();
     if (!name || description.length < 10) {
       //show error for inbox
-      setErrorName(true);
-      setErrorDes(true);
+      if (!name) {
+        setErrorName(true);
+      }
+      if (description.length < 10) {
+        setErrorDes(true);
+      }
 
       return;
     }
@@ -64,6 +68,8 @@ export default function FormComp() {
         time,
       })
     );
+    setErrorName(false);
+    setErrorDes(false);
 
     //clearing the input feilds after submit
     setMeeting(initialStates.meeting);

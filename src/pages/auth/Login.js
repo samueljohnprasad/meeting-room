@@ -19,33 +19,36 @@ const styles = {
   flexDirection: "column",
 };
 
-function Login({history}) {
-
-      //console.log(history)
-    const dispatch= useDispatch();
+function Login({ history }) {
+  //console.log(history)
+  const dispatch = useDispatch();
 
   const googleLogin = async () => {
+    auth
+      .signInWithPopup(googleAuthProvider)
+      .then(async (result) => {
+        const { user } = result;
+        // console.log('userr-> ',user)
+        // console.log('photoURL',user.photoURL)
 
-    auth.signInWithPopup(googleAuthProvider).then(async (result) => {
-      const { user } = result;
-      //console.log('userr-> ',user)
-       
-      //console.log('displayName->',user.displayName)
+        //console.log('displayName->',user.displayName)
 
-      const idTokenResult = await user.getIdTokenResult();
-      console.log('idTokenResult',idTokenResult)
-      dispatch({
-       type:'LOGGED_IN_USER',
-       payload:{
-           email:user.email,
-           token:idTokenResult.token,
-           displayName:user.displayName
-       }
+        const idTokenResult = await user.getIdTokenResult();
+        //console.log('idTokenResult',idTokenResult)
+        dispatch({
+          type: "LOGGED_IN_USER",
+          payload: {
+            email: user.email,
+            token: idTokenResult.token,
+            displayName: user.displayName,
+            photoURL: user.photoURL,
+          },
+        });
+        history.push("/home");
       })
-      history.push('/home')
-    }).catch((err)=>{
-        console.log('you got error',err)
-    })
+      .catch((err) => {
+        console.log("you got error", err);
+      });
   };
   return (
     <div className="sty">
