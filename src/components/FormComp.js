@@ -3,15 +3,16 @@ import { useSelector, useDispatch } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 import submitFormAction from "../actions/submitFormAction";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
+
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
-import Chip from "@material-ui/core/Chip";
+//CSS
 import Chips from "./Chips";
+import "react-calendar/dist/Calendar.css";
+
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
@@ -41,27 +42,30 @@ export default function FormComp() {
 
   //event handlers
   const timeHandler = (e) => {
-    setTime(e)
+    setTime(e);
   };
   const bookAppointmentHandler = (e) => {
     e.preventDefault();
-    if (!name || description.length < 1) {
-     //length changed to 1 while in devlopment
+    if (!name || description.length < 10) {
+      //show error for inbox
       setErrorName(true);
       setErrorDes(true);
 
       return;
     }
 
+    //dispatching the action
     dispatch(
       submitFormAction({
         name,
         description,
         meeting,
         date: date.toLocaleDateString(),
-        time
+        time,
       })
     );
+
+    //clearing the input feilds after submit
     setMeeting(initialStates.meeting);
     setDate(initialStates.currentDate);
     setDescription("");
@@ -99,7 +103,6 @@ export default function FormComp() {
               value={meeting}
               onChange={(e) => {
                 setMeeting(e.target.value);
-                
               }}
               label="Select Meeting Room"
               inputProps={{
