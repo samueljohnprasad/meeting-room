@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/meeting-room/static/css/main.5a6b5d1b.chunk.css",
+    "main.js": "/meeting-room/static/js/main.5df0a85c.chunk.js",
+    "main.js.map": "/meeting-room/static/js/main.5df0a85c.chunk.js.map",
+    "runtime-main.js": "/meeting-room/static/js/runtime-main.a9a28b73.js",
+    "runtime-main.js.map": "/meeting-room/static/js/runtime-main.a9a28b73.js.map",
+    "static/css/2.8cebfa1f.chunk.css": "/meeting-room/static/css/2.8cebfa1f.chunk.css",
+    "static/js/2.ebcddc9f.chunk.js": "/meeting-room/static/js/2.ebcddc9f.chunk.js",
+    "static/js/2.ebcddc9f.chunk.js.map": "/meeting-room/static/js/2.ebcddc9f.chunk.js.map",
+    "static/js/3.87d84531.chunk.js": "/meeting-room/static/js/3.87d84531.chunk.js",
+    "static/js/3.87d84531.chunk.js.map": "/meeting-room/static/js/3.87d84531.chunk.js.map",
+    "index.html": "/meeting-room/index.html",
+    "static/css/2.8cebfa1f.chunk.css.map": "/meeting-room/static/css/2.8cebfa1f.chunk.css.map",
+    "static/css/main.5a6b5d1b.chunk.css.map": "/meeting-room/static/css/main.5a6b5d1b.chunk.css.map",
+    "static/js/2.ebcddc9f.chunk.js.LICENSE.txt": "/meeting-room/static/js/2.ebcddc9f.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/meeting-room/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a9a28b73.js",
+    "static/css/2.8cebfa1f.chunk.css",
+    "static/js/2.ebcddc9f.chunk.js",
+    "static/css/main.5a6b5d1b.chunk.css",
+    "static/js/main.5df0a85c.chunk.js"
+  ]
+}
