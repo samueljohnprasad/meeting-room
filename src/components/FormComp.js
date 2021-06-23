@@ -50,9 +50,13 @@ export default function FormComp() {
       //show error for inbox
       if (!name) {
         setErrorName(true);
+      }else{
+        setErrorName(false);
       }
       if (description.length < 10) {
         setErrorDes(true);
+      }else{
+        setErrorDes(false);
       }
 
       return;

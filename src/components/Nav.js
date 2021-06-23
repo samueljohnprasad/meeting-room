@@ -104,7 +104,7 @@ function Nav() {
 
   return (
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar color={"secondary"} position="static">
         <Toolbar>
           <Typography  variant="h6" noWrap>
             Meeting Room
