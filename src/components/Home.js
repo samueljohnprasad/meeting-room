@@ -2,21 +2,16 @@ import React from "react";
 import DisplayMeeting from "./DisplayMeeting";
 import FormComp from "./FormComp";
 function Home() {
-
-    const styles={
-        display:'flex'
-    }
   return (
-    <div  className="App">
+    <div className="App">
       <div>
         <h1>your meetings</h1>
         <div className="lol">
           <DisplayMeeting />
         </div>
-
       </div>
       <div className="hey">
-      <FormComp/>
+        <FormComp />
       </div>
     </div>
   );

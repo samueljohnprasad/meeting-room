@@ -1,48 +1,23 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import { Avatar } from '@material-ui/core';
+import { Avatar } from "@material-ui/core";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import {useSelector} from 'react-redux'
+import navStyles from "./navStyles";
 
-const useStyles = makeStyles((theme) => ({
-  grow: {
-    flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  title: {
-    textAlign:'left',
-    marginLeft:'40%',
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
-  },
-
-  inputRoot: {
-    color: "inherit",
-  },
-}));
-
+const useStyles = navStyles();
 function Nav() {
   const classes = useStyles();
 
-  
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  //let history = useHistory();
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-  const {displayName,photoURL} =useSelector((store)=>store.user)
-  console.log('pp',photoURL)
-  
+
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -55,10 +30,6 @@ function Nav() {
     setAnchorEl(null);
     handleMobileMenuClose();
     //history.push('/')
-  };
-
-  const handleMobileMenuOpen = (event) => {
-    setMobileMoreAnchorEl(event.currentTarget);
   };
 
   const menuId = "primary-search-account-menu";
@@ -106,15 +77,14 @@ function Nav() {
     <div className={classes.grow}>
       <AppBar color={"secondary"} position="static">
         <Toolbar>
-          <Typography  variant="h6" noWrap>
+          <Typography variant="h6" noWrap>
             Meeting Room
           </Typography>
           <Typography className={classes.title} variant="h6" noWrap>
-            {`Hello ${displayName}`}
+            {`Hello`}
           </Typography>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            
             <IconButton
               edge="end"
               aria-label="account of current user"
@@ -123,7 +93,7 @@ function Nav() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <Avatar alt='p' src={photoURL}/>
+              <Avatar alt="photo" />
             </IconButton>
           </div>
         </Toolbar>
